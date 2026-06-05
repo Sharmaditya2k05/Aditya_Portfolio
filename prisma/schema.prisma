@@ -1,0 +1,52 @@
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─── Contact form submissions ────────────────────────────────────────────────
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String?
+  message   String
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("contact_messages")
+}
+
+// ─── Projects (CMS-driven) ───────────────────────────────────────────────────
+model Project {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  description String
+  longDesc    String?
+  techStack   String[] // ["C++17", "Python", ...]
+  githubUrl   String?
+  liveUrl     String?
+  imageUrl    String?  // Cloudinary URL
+  featured    Boolean  @default(false)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("projects")
+}
+
+// ─── Resume/CV download tracking ─────────────────────────────────────────────
+model ResumeDownload {
+  id        String   @id @default(cuid())
+  ip        String?
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  @@map("resume_downloads")
+}

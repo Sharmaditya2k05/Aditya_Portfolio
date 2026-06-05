@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Custom Properties ──────────────────────────────────────────────────── */
+:root {
+  --radius: 0.125rem; /* 2px — sharp corners throughout */
+}
+
+/* ─── Base Styles ────────────────────────────────────────────────────────── */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background: #080c0a;
+  }
+
+  body {
+    background: #080c0a;
+    color: #e8f0ea;
+    font-family: var(--font-syne), ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  /* Custom thin scrollbar */
+  ::-webkit-scrollbar {
+    width: 2px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0c0c0c;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2a2a2a;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #e8e8e8;
+  }
+
+  /* Selection */
+  ::selection {
+    background: #2a2a2a;
+    color: #e8e8e8;
+  }
+}
+
+/* ─── shadcn / Radix CSS variables (mapped to dark theme) ───────────────── */
+@layer base {
+  :root {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 91%;
+    --card: 0 0% 11%;
+    --card-foreground: 0 0% 91%;
+    --popover: 0 0% 11%;
+    --popover-foreground: 0 0% 91%;
+    --primary: 0 0% 91%;
+    --primary-foreground: 0 0% 7%;
+    --secondary: 0 0% 14%;
+    --secondary-foreground: 0 0% 60%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 33%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 17%;
+    --input: 0 0% 14%;
+    --ring: 0 0% 91%;
+  }
+}
+
+/* ─── Utility animations ─────────────────────────────────────────────────── */
+@layer utilities {
+  .bg-grid-pattern {
+    background-image: linear-gradient(#1f2d24 1px, transparent 1px),
+      linear-gradient(90deg, #1f2d24 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+
+  .text-gradient-hero {
+    background: linear-gradient(180deg, #646973 0%, #bbccd7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
