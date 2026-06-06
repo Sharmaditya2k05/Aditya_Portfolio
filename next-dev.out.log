@@ -1,0 +1,35 @@
+
+> aditya-portfolio@0.1.0 dev
+> next dev --turbopack --port 3010
+
+   ▲ Next.js 15.0.7 (Turbopack)
+   - Local:        http://localhost:3010
+
+ ✓ Starting...
+ ✓ Ready in 836ms
+ ○ Compiling / ...
+ ✓ Compiled / in 2.9s
+ GET / 200 in 3133ms
+ GET / 200 in 76ms
+ GET / 200 in 82ms
+ ✓ Compiled in 46ms
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 1346ms
+ ✓ Compiled / in 30ms
+ GET / 200 in 213ms
+ ✓ Compiled in 109ms
+ ✓ Compiled in 70ms
+ ✓ Compiled in 157ms
+ ✓ Compiled in 156ms
+ ✓ Compiled in 125ms
+ ✓ Compiled in 116ms
+ ✓ Compiled in 73ms
+ ✓ Compiled in 122ms
+ ✓ Compiled in 93ms
+ ✓ Compiled in 101ms
+ ✓ Compiled in 113ms
+ ✓ Compiled in 96ms
+ ✓ Compiled in 370ms
+ ✓ Compiled / in 68ms
+ GET / 200 in 331ms
+ GET / 200 in 692ms

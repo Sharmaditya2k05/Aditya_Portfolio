@@ -1,0 +1,123 @@
+
+[1m[33mwarn[39m[22m - The class `duration-[120ms]` is ambiguous and matches multiple utilities.
+[1m[33mwarn[39m[22m - If this is content and not a class, replace it with `duration-&lsqb;120ms&rsqb;` to silence this warning.
+ ⨯ Error: ENOENT: no such file or directory, open 'D:\Aditya_Portfolio-main\Aditya_Portfolio-main\.next\server\app\page\app-build-manifest.json'
+    at async readPartialManifest (node_modules\next\src\server\dev\turbopack\manifest-loader.ts:102:20)
+    at async TurbopackManifestLoader.loadAppBuildManifest (node_modules\next\src\server\dev\turbopack\manifest-loader.ts:216:6)
+    at async handleRouteType (node_modules\next\src\server\dev\turbopack-utils.ts:596:6)
+    at async Object.ensurePage (node_modules\next\src\server\dev\hot-reloader-turbopack.ts:979:8)
+    at async DevBundlerService.ensurePage (node_modules\next\src\server\lib\dev-bundler-service.ts:33:11)
+    at async DevServer.ensurePage (node_modules\next\src\server\dev\next-dev-server.ts:840:4)
+    at async Object.ensure (node_modules\next\src\server\dev\next-dev-server.ts:222:8)
+    at async DevRouteMatcherManager.matchAll (node_modules\next\src\server\route-matcher-managers\dev-route-matcher-manager.ts:77:6)
+    at match (node_modules\next\src\server\route-matcher-managers\default-route-matcher-manager.ts:211:21)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules\next\src\server\next-server.ts:968:20)
+    at async DevServer.handleRequestImpl (node_modules\next\src\server\base-server.ts:1462:8)
+    at async (node_modules\next\src\server\dev\next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules\next\src\trace\trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules\next\src\server\dev\next-dev-server.ts:512:19)
+    at async invokeRender (node_modules\next\src\server\lib\router-server.ts:284:10)
+    at async handleRequest (node_modules\next\src\server\lib\router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules\next\src\server\lib\router-server.ts:576:6)
+    at async Server.requestListener (node_modules\next\src\server\lib\start-server.ts:146:6) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Aditya_Portfolio-main\\Aditya_Portfolio-main\\.next\\server\\app\\page\\app-build-manifest.json'
+}
+ ⨯ Error: ENOENT: no such file or directory, open 'D:\Aditya_Portfolio-main\Aditya_Portfolio-main\.next\server\app\page\app-build-manifest.json'
+    at async readPartialManifest (node_modules\next\src\server\dev\turbopack\manifest-loader.ts:102:20)
+    at async TurbopackManifestLoader.loadAppBuildManifest (node_modules\next\src\server\dev\turbopack\manifest-loader.ts:216:6)
+    at async handleRouteType (node_modules\next\src\server\dev\turbopack-utils.ts:596:6)
+    at async Object.ensurePage (node_modules\next\src\server\dev\hot-reloader-turbopack.ts:979:8)
+    at async DevBundlerService.ensurePage (node_modules\next\src\server\lib\dev-bundler-service.ts:33:11)
+    at async DevServer.ensurePage (node_modules\next\src\server\dev\next-dev-server.ts:840:4)
+    at async Object.ensure (node_modules\next\src\server\dev\next-dev-server.ts:222:8)
+    at async DevRouteMatcherManager.matchAll (node_modules\next\src\server\route-matcher-managers\dev-route-matcher-manager.ts:77:6)
+    at match (node_modules\next\src\server\route-matcher-managers\default-route-matcher-manager.ts:211:21)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules\next\src\server\next-server.ts:968:20)
+    at async DevServer.handleRequestImpl (node_modules\next\src\server\base-server.ts:1462:8)
+    at async (node_modules\next\src\server\dev\next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules\next\src\trace\trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules\next\src\server\dev\next-dev-server.ts:512:19)
+    at async invokeRender (node_modules\next\src\server\lib\router-server.ts:284:10)
+    at async handleRequest (node_modules\next\src\server\lib\router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules\next\src\server\lib\router-server.ts:576:6)
+    at async Server.requestListener (node_modules\next\src\server\lib\start-server.ts:146:6) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Aditya_Portfolio-main\\Aditya_Portfolio-main\\.next\\server\\app\\page\\app-build-manifest.json'
+}
+ ⨯ Error: ENOENT: no such file or directory, open 'D:\Aditya_Portfolio-main\Aditya_Portfolio-main\.next\server\app\page\app-build-manifest.json'
+    at async readPartialManifest (node_modules\next\src\server\dev\turbopack\manifest-loader.ts:102:20)
+    at async TurbopackManifestLoader.loadAppBuildManifest (node_modules\next\src\server\dev\turbopack\manifest-loader.ts:216:6)
+    at async handleRouteType (node_modules\next\src\server\dev\turbopack-utils.ts:596:6)
+    at async Object.ensurePage (node_modules\next\src\server\dev\hot-reloader-turbopack.ts:979:8)
+    at async DevBundlerService.ensurePage (node_modules\next\src\server\lib\dev-bundler-service.ts:33:11)
+    at async DevServer.ensurePage (node_modules\next\src\server\dev\next-dev-server.ts:840:4)
+    at async Object.ensure (node_modules\next\src\server\dev\next-dev-server.ts:222:8)
+    at async DevRouteMatcherManager.matchAll (node_modules\next\src\server\route-matcher-managers\dev-route-matcher-manager.ts:77:6)
+    at match (node_modules\next\src\server\route-matcher-managers\default-route-matcher-manager.ts:211:21)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules\next\src\server\next-server.ts:968:20)
+    at async DevServer.handleRequestImpl (node_modules\next\src\server\base-server.ts:1462:8)
+    at async (node_modules\next\src\server\dev\next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules\next\src\trace\trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules\next\src\server\dev\next-dev-server.ts:512:19)
+    at async invokeRender (node_modules\next\src\server\lib\router-server.ts:284:10)
+    at async handleRequest (node_modules\next\src\server\lib\router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules\next\src\server\lib\router-server.ts:576:6)
+    at async Server.requestListener (node_modules\next\src\server\lib\start-server.ts:146:6) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Aditya_Portfolio-main\\Aditya_Portfolio-main\\.next\\server\\app\\page\\app-build-manifest.json'
+}
+ ⨯ Error: ENOENT: no such file or directory, open 'D:\Aditya_Portfolio-main\Aditya_Portfolio-main\.next\server\app\page\app-build-manifest.json'
+    at async readPartialManifest (node_modules\next\src\server\dev\turbopack\manifest-loader.ts:102:20)
+    at async TurbopackManifestLoader.loadAppBuildManifest (node_modules\next\src\server\dev\turbopack\manifest-loader.ts:216:6)
+    at async handleRouteType (node_modules\next\src\server\dev\turbopack-utils.ts:596:6)
+    at async Object.ensurePage (node_modules\next\src\server\dev\hot-reloader-turbopack.ts:979:8)
+    at async DevBundlerService.ensurePage (node_modules\next\src\server\lib\dev-bundler-service.ts:33:11)
+    at async DevServer.ensurePage (node_modules\next\src\server\dev\next-dev-server.ts:840:4)
+    at async Object.ensure (node_modules\next\src\server\dev\next-dev-server.ts:222:8)
+    at async DevRouteMatcherManager.matchAll (node_modules\next\src\server\route-matcher-managers\dev-route-matcher-manager.ts:77:6)
+    at match (node_modules\next\src\server\route-matcher-managers\default-route-matcher-manager.ts:211:21)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules\next\src\server\next-server.ts:968:20)
+    at async DevServer.handleRequestImpl (node_modules\next\src\server\base-server.ts:1462:8)
+    at async (node_modules\next\src\server\dev\next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules\next\src\trace\trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules\next\src\server\dev\next-dev-server.ts:512:19)
+    at async invokeRender (node_modules\next\src\server\lib\router-server.ts:284:10)
+    at async handleRequest (node_modules\next\src\server\lib\router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules\next\src\server\lib\router-server.ts:576:6)
+    at async Server.requestListener (node_modules\next\src\server\lib\start-server.ts:146:6) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Aditya_Portfolio-main\\Aditya_Portfolio-main\\.next\\server\\app\\page\\app-build-manifest.json'
+}
+ ⨯ Error: ENOENT: no such file or directory, open 'D:\Aditya_Portfolio-main\Aditya_Portfolio-main\.next\server\app\page\app-build-manifest.json'
+    at async readPartialManifest (node_modules\next\src\server\dev\turbopack\manifest-loader.ts:102:20)
+    at async TurbopackManifestLoader.loadAppBuildManifest (node_modules\next\src\server\dev\turbopack\manifest-loader.ts:216:6)
+    at async handleRouteType (node_modules\next\src\server\dev\turbopack-utils.ts:596:6)
+    at async Object.ensurePage (node_modules\next\src\server\dev\hot-reloader-turbopack.ts:979:8)
+    at async DevBundlerService.ensurePage (node_modules\next\src\server\lib\dev-bundler-service.ts:33:11)
+    at async DevServer.ensurePage (node_modules\next\src\server\dev\next-dev-server.ts:840:4)
+    at async Object.ensure (node_modules\next\src\server\dev\next-dev-server.ts:222:8)
+    at async DevRouteMatcherManager.matchAll (node_modules\next\src\server\route-matcher-managers\dev-route-matcher-manager.ts:77:6)
+    at match (node_modules\next\src\server\route-matcher-managers\default-route-matcher-manager.ts:211:21)
+    at async NextNodeServer.handleCatchallRenderRequest (node_modules\next\src\server\next-server.ts:968:20)
+    at async DevServer.handleRequestImpl (node_modules\next\src\server\base-server.ts:1462:8)
+    at async (node_modules\next\src\server\dev\next-dev-server.ts:514:13)
+    at async Span.traceAsyncFn (node_modules\next\src\trace\trace.ts:143:13)
+    at async DevServer.handleRequest (node_modules\next\src\server\dev\next-dev-server.ts:512:19)
+    at async invokeRender (node_modules\next\src\server\lib\router-server.ts:284:10)
+    at async handleRequest (node_modules\next\src\server\lib\router-server.ts:530:15)
+    at async requestHandlerImpl (node_modules\next\src\server\lib\router-server.ts:576:6)
+    at async Server.requestListener (node_modules\next\src\server\lib\start-server.ts:146:6) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Aditya_Portfolio-main\\Aditya_Portfolio-main\\.next\\server\\app\\page\\app-build-manifest.json'
+}
