@@ -10,6 +10,7 @@ import {
   Linkedin,
   Loader2,
   Mail,
+  MapPin,
   MessageSquare,
   Phone,
   Send,
@@ -127,8 +128,8 @@ export function ContactFormSection() {
     <section id="contact" className="portfolio-grid relative overflow-hidden bg-[#050809] px-5 py-12 sm:px-8 lg:px-12 lg:py-16">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-black/45 to-transparent" />
 
-      <div className="relative z-10 mx-auto max-w-[1480px]">
-        <div className="mb-6 grid gap-8 lg:grid-cols-[0.18fr_0.82fr]">
+      <div className="relative z-10 mx-auto w-[94vw]">
+        <div className="mb-4 grid gap-7 lg:grid-cols-[250px_1fr]">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="pt-10">
             <div className="mb-6 flex items-center gap-4 font-mono text-sm font-bold uppercase tracking-[0.18em] text-[#f4b64b]">
               Let&apos;s Connect <span className="h-px w-9 bg-[#f4b64b]" />
@@ -143,7 +144,7 @@ export function ContactFormSection() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="pointer-events-none select-none font-display text-[clamp(90px,17vw,300px)] font-black uppercase leading-[0.78] tracking-normal text-[#f4b64b]/18"
+            className="pointer-events-none select-none font-display text-[clamp(92px,16vw,260px)] font-black uppercase leading-[0.78] tracking-normal text-[#f4b64b]/18"
           >
             Get In
             <span className="ml-4 font-serif font-normal italic normal-case text-[#f4b64b] drop-shadow-[0_0_30px_rgba(244,182,75,0.36)]">
@@ -159,7 +160,7 @@ export function ContactFormSection() {
           viewport={{ once: true, amount: 0.08 }}
           className="grid gap-6 lg:grid-cols-[1fr_420px]"
         >
-          <motion.div variants={fadeUp} className="panel-frost rounded-[18px] p-5 sm:p-8">
+          <motion.div variants={fadeUp} className="panel-frost rounded-[18px] p-5 shadow-[0_24px_90px_rgba(0,0,0,0.45)] sm:p-8">
             <div className="grid gap-6 sm:grid-cols-[56px_1fr_56px_1fr]">
               <div className="hidden h-14 w-14 items-center justify-center rounded-lg border border-white/10 text-[#f4b64b] sm:flex">
                 <User size={24} />
@@ -234,24 +235,35 @@ export function ContactFormSection() {
           </motion.div>
 
           <motion.aside variants={fadeUp} className="space-y-5">
-            <div className="panel-frost rounded-[18px] p-7">
+            <div className="panel-frost rounded-[18px] p-7 shadow-[0_24px_90px_rgba(0,0,0,0.45)]">
               <p className="mb-4 font-mono text-base font-bold uppercase tracking-widest text-[#f4b64b]">Or Reach Me Directly</p>
               {SOCIAL_LINKS.map((link) => (
                 <SocialRow key={link.label} link={link} />
               ))}
             </div>
 
-            <div className="panel-frost rounded-[18px] p-7">
-              <div className="mb-4 flex items-center gap-2">
+            <div className="panel-frost relative min-h-[156px] overflow-hidden rounded-[18px] p-7 shadow-[0_24px_90px_rgba(0,0,0,0.45)]">
+              <div className="world-map-dots pointer-events-none absolute bottom-2 right-3 h-28 w-44 opacity-70" />
+              <div className="pointer-events-none absolute -right-12 -top-16 h-56 w-56 rounded-full border border-[#f4b64b]/12" />
+              <div className="relative z-10 mb-4 flex items-center gap-2">
                 <span className="h-2.5 w-2.5 animate-pulse rounded-full bg-emerald-400" />
                 <span className="font-display text-lg font-bold uppercase text-white">Available</span>
               </div>
-              <p className="font-mono text-sm leading-7 text-white/62">
+              <p className="relative z-10 max-w-[260px] font-mono text-sm leading-7 text-white/62">
                 Open to internships, part-time roles, and interesting project collaborations. Based in New Delhi, remote friendly.
               </p>
+              <div className="relative z-10 mt-4 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#f4b64b]/80">
+                <MapPin size={14} /> New Delhi
+              </div>
             </div>
           </motion.aside>
         </motion.div>
+
+        <div className="mt-8 hidden items-center gap-8 lg:flex">
+          <span className="font-mono text-xs text-white/42">(c) 2026 Aditya Sharma</span>
+          <span className="h-px flex-1 bg-gradient-to-r from-[#f4b64b] via-[#f4b64b]/55 to-transparent" />
+          <span className="font-mono text-xs uppercase tracking-widest text-white/48">New Delhi - AI/ML Engineer</span>
+        </div>
       </div>
     </section>
   );

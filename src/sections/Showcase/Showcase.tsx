@@ -32,7 +32,7 @@ export function ProjectsShowcase() {
 
   return (
     <section id="projects" className="portfolio-grid relative overflow-hidden bg-[#050809] px-5 py-12 sm:px-8 lg:px-12 lg:py-16">
-      <div className="relative z-10 mx-auto max-w-[1480px]">
+      <div className="relative z-10 mx-auto w-[94vw]">
         <div className="mb-8 grid gap-8 lg:grid-cols-[0.45fr_0.55fr] lg:items-end">
           <div className="grid gap-6 md:grid-cols-[0.8fr_1fr] md:items-end">
             <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>

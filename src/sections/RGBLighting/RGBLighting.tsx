@@ -1,5 +1,6 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
@@ -119,15 +120,32 @@ const CERTS = [
 const tabs = ["All", "AI / ML", "Data / Analytics", "Systems / Database", "Programming"] as const;
 const tabIcons = [Grid2X2, Award, BarChart3, Database, Code2];
 
+function GoogleLogo() {
+  return (
+    <span className="font-sans text-3xl font-black leading-none" aria-label="Google">
+      <span style={{ color: "#4285F4" }}>G</span>
+    </span>
+  );
+}
+
+function HackerRankLogo({ icon: Icon }: { icon: typeof Code2 }) {
+  return (
+    <div className="relative flex h-8 w-8 items-center justify-center">
+      <div className="absolute inset-0 rotate-45 rounded-sm border border-[#22c55e]/60" />
+      <Icon size={19} className="relative z-10 text-[#22c55e]" />
+    </div>
+  );
+}
+
 export function CertificationsSection() {
   const [active, setActive] = useState<(typeof tabs)[number]>("All");
   const visible = useMemo(() => (active === "All" ? CERTS : CERTS.filter((cert) => cert.category === active)), [active]);
 
   return (
     <section id="achievements" className="portfolio-grid relative overflow-hidden bg-[#050809] px-5 py-12 sm:px-8 lg:px-12 lg:py-16">
-      <div className="relative z-10 mx-auto max-w-[1480px]">
-        <div className="mb-8 grid gap-7 lg:grid-cols-[0.48fr_0.52fr] lg:items-end">
-          <div className="grid gap-6 md:grid-cols-[minmax(360px,0.92fr)_minmax(280px,0.8fr)] md:items-end">
+      <div className="relative z-10 mx-auto w-[94vw]">
+        <div className="mb-8 grid gap-8 xl:grid-cols-[minmax(760px,0.62fr)_1fr] xl:items-end">
+          <div className="grid gap-8 md:grid-cols-[minmax(420px,0.9fr)_minmax(360px,0.58fr)] md:items-end">
             <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
               <div className="mb-5 flex items-center gap-4 font-mono text-sm font-bold uppercase tracking-[0.22em] text-[#f4b64b]">
                 <span className="h-px w-10 bg-[#f4b64b]" />
@@ -139,12 +157,12 @@ export function CertificationsSection() {
                 & Awards
               </h2>
             </motion.div>
-            <motion.p variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="max-w-md font-mono text-sm leading-7 text-white/64">
+            <motion.p variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="max-w-[420px] font-mono text-sm leading-7 text-white/64">
               Credentials and achievements that validate my expertise and commitment to continuous learning.
             </motion.p>
           </div>
 
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-wrap justify-start gap-3 lg:justify-end">
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="flex flex-wrap justify-start gap-3 xl:justify-end">
             {tabs.map((tab, index) => {
               const Icon = tabIcons[index];
               return (
@@ -174,17 +192,21 @@ export function CertificationsSection() {
           {visible.map((cert) => {
             const Icon = typeof cert.icon === "string" ? null : cert.icon;
             const iconLabel = typeof cert.icon === "string" ? cert.icon : null;
+            const cardStyle = {
+              "--cert-color": cert.orgColor,
+              borderColor: cert.highlight ? "rgba(244,182,75,0.36)" : "rgba(255,255,255,0.1)",
+            } as CSSProperties;
             return (
               <motion.article
                 key={cert.title}
                 variants={fadeUp}
-                whileHover={{ y: -5 }}
-                className="panel-frost group relative flex min-h-[300px] flex-col overflow-hidden rounded-xl p-6"
-                style={{
-                  borderColor: cert.highlight ? "rgba(244,182,75,0.36)" : "rgba(255,255,255,0.1)",
+                whileHover={{
+                  y: -7,
+                  boxShadow: `0 24px 80px ${cert.orgColor}18, inset 0 1px 0 rgba(255,255,255,0.06)`,
                 }}
+                className="panel-frost cert-glow-bar group relative flex min-h-[300px] flex-col overflow-hidden rounded-xl p-6"
+                style={cardStyle}
               >
-                <div className="absolute left-0 top-0 h-px w-28" style={{ background: cert.orgColor }} />
                 <div className="mb-6 flex items-center justify-between">
                   <span className="font-mono text-xs font-bold uppercase tracking-[0.26em]" style={{ color: cert.orgColor }}>
                     {cert.orgShort}
@@ -193,8 +215,21 @@ export function CertificationsSection() {
                 </div>
 
                 <div className="mb-5 grid grid-cols-[56px_1fr] gap-4">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-lg border border-white/10 bg-black/35 font-display text-3xl font-extrabold text-white">
-                    {Icon ? <Icon size={27} style={{ color: cert.orgColor }} /> : <span style={{ color: cert.orgColor }}>{iconLabel}</span>}
+                  <div
+                    className="flex h-14 w-14 items-center justify-center rounded-lg border border-white/10 bg-black/45 font-display text-3xl font-extrabold text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] transition group-hover:scale-105"
+                    style={{ boxShadow: `0 0 28px ${cert.orgColor}18, inset 0 1px 0 rgba(255,255,255,0.05)` }}
+                  >
+                    {cert.orgShort === "GOOGLE" ? (
+                      <GoogleLogo />
+                    ) : cert.orgShort === "HACKERRANK" && Icon ? (
+                      <HackerRankLogo icon={Icon} />
+                    ) : Icon ? (
+                      <Icon size={27} style={{ color: cert.orgColor }} />
+                    ) : (
+                      <span className="font-sans text-3xl font-black" style={{ color: cert.orgColor }}>
+                        {iconLabel}
+                      </span>
+                    )}
                   </div>
                   <div>
                     <h3 className="font-display text-xl font-extrabold leading-tight text-white">{cert.title}</h3>
@@ -225,7 +260,7 @@ export function CertificationsSection() {
           })}
         </motion.div>
 
-        <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="panel-frost mx-auto mt-8 flex max-w-[1320px] flex-col gap-5 rounded-[18px] p-6 sm:flex-row sm:items-center sm:justify-between">
+        <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="panel-frost mx-auto mt-8 flex w-[86vw] flex-col gap-5 rounded-[18px] p-6 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-4">
             <Trophy className="text-[#f4b64b]" size={38} />
             <div>

@@ -21,7 +21,7 @@ export function ExperienceSection() {
     <section id="experience" className="portfolio-grid relative overflow-hidden bg-[#060909] px-5 py-12 sm:px-8 lg:px-12 lg:py-16">
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/50" />
 
-      <div className="relative z-10 mx-auto max-w-[1480px]">
+      <div className="relative z-10 mx-auto w-[94vw]">
         <div className="mb-8 grid items-end gap-8 lg:grid-cols-[0.35fr_0.65fr]">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <div className="mb-6 flex items-center gap-4 font-mono text-sm font-bold uppercase tracking-[0.22em] text-[#f4b64b]">

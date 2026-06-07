@@ -10,6 +10,7 @@ import {
   Database,
   Eye,
   Layers3,
+  Asterisk,
   ShieldCheck,
   Wrench,
 } from "lucide-react";
@@ -17,12 +18,21 @@ import { staggerContainer, fadeUp } from "@/lib/animations";
 import { CAT_SKILLS, CATEGORIES, SKILLS_DATA, STATS } from "@/data/hardware";
 
 const orbitItems = [
-  { label: "AI / ML", key: "ai", icon: Brain, x: 50, y: 15 },
-  { label: "Frameworks", key: "fw", icon: Code2, x: 82, y: 36 },
-  { label: "Tools", key: "tools", icon: Wrench, x: 74, y: 74 },
-  { label: "Data", key: "all", icon: Database, x: 50, y: 86 },
-  { label: "Languages", key: "lang", icon: Code2, x: 22, y: 70 },
-  { label: "Computer Vision", key: "ai", icon: Eye, x: 18, y: 35 },
+  { label: "AI / ML", key: "ai", icon: Brain, x: 50, y: 13 },
+  { label: "Frameworks", key: "fw", icon: Code2, x: 85, y: 36 },
+  { label: "Tools", key: "tools", icon: Wrench, x: 78, y: 72 },
+  { label: "Data", key: "all", icon: Database, x: 50, y: 88 },
+  { label: "Languages", key: "lang", icon: Code2, x: 22, y: 72 },
+  { label: "Computer Vision", key: "ai", icon: Eye, x: 15, y: 36 },
+];
+
+const innerOrbitDots = [
+  { x: "71", y: "50" },
+  { x: "60.5", y: "68.1865" },
+  { x: "39.5", y: "68.1865" },
+  { x: "29", y: "50" },
+  { x: "39.5", y: "31.8135" },
+  { x: "60.5", y: "31.8135" },
 ];
 
 function SkillWebGraph({
@@ -33,28 +43,45 @@ function SkillWebGraph({
   setActiveTab: (key: string) => void;
 }) {
   return (
-    <div className="relative mx-auto aspect-[1.18] w-full max-w-[460px]">
+    <div className="relative mx-auto aspect-square w-full max-w-[460px]">
       <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 100" aria-hidden="true">
         <defs>
           <linearGradient id="webLine" x1="0" x2="1" y1="0" y2="1">
-            <stop offset="0" stopColor="#f4b64b" stopOpacity="0.18" />
+            <stop offset="0" stopColor="#f4b64b" stopOpacity="0.42" />
             <stop offset="1" stopColor="#ffffff" stopOpacity="0.08" />
           </linearGradient>
+          <filter id="nodeGlow">
+            <feGaussianBlur stdDeviation="1.4" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
         </defs>
+        <circle cx="50" cy="50" r="38" fill="none" stroke="#f4b64b" strokeOpacity="0.12" strokeWidth="0.8" />
+        <circle cx="50" cy="50" r="30" fill="none" stroke="#f4b64b" strokeDasharray="1 1.4" strokeOpacity="0.24" strokeWidth="0.55" />
+        <circle cx="50" cy="50" r="19" fill="none" stroke="#f4b64b" strokeOpacity="0.28" strokeWidth="0.8" />
+        <circle cx="50" cy="50" r="12" fill="rgba(244,182,75,0.05)" stroke="#ffffff" strokeOpacity="0.45" strokeWidth="0.7" />
         {orbitItems.map((item) => (
-          <line key={`center-${item.label}`} x1="50" y1="50" x2={item.x} y2={item.y} stroke="url(#webLine)" strokeWidth="0.8" />
+          <line key={`center-${item.label}`} x1="50" y1="50" x2={item.x} y2={item.y} stroke="url(#webLine)" strokeWidth="0.55" />
         ))}
         {orbitItems.map((item, index) => {
           const next = orbitItems[(index + 1) % orbitItems.length];
-          return <line key={`edge-${item.label}`} x1={item.x} y1={item.y} x2={next.x} y2={next.y} stroke="#f4b64b" strokeOpacity="0.14" strokeWidth="0.7" />;
+          return <line key={`edge-${item.label}`} x1={item.x} y1={item.y} x2={next.x} y2={next.y} stroke="#f4b64b" strokeOpacity="0.11" strokeWidth="0.55" />;
         })}
+        {orbitItems.map((item) => (
+          <circle key={`dot-${item.label}`} cx={item.x} cy={item.y} r="1.45" fill="#ffd27a" filter="url(#nodeGlow)" />
+        ))}
+        {innerOrbitDots.map((dot) => (
+          <circle key={`${dot.x}-${dot.y}`} cx={dot.x} cy={dot.y} r="0.8" fill="#f4b64b" opacity="0.85" />
+        ))}
       </svg>
       <button
         type="button"
         onClick={() => setActiveTab("all")}
-        className="absolute left-1/2 top-1/2 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-xl border border-[#f4b64b]/45 bg-[#f4b64b]/10 font-display text-sm font-bold uppercase text-[#f4b64b] shadow-[0_0_44px_rgba(244,182,75,0.16)] transition hover:bg-[#f4b64b] hover:text-black"
+        className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-[#f4b64b]/42 bg-[#f4b64b]/10 text-[#f4b64b] shadow-[0_0_54px_rgba(244,182,75,0.2)] transition hover:bg-[#f4b64b] hover:text-black"
       >
-        Core
+        <Asterisk size={34} strokeWidth={1.5} />
       </button>
       {orbitItems.map((item) => {
         const Icon = item.icon;
@@ -65,7 +92,7 @@ function SkillWebGraph({
             key={item.label}
             whileHover={{ scale: 1.06, y: -3 }}
             onClick={() => setActiveTab(item.key)}
-            className={`panel-frost absolute flex min-h-14 w-32 -translate-x-1/2 -translate-y-1/2 items-center justify-center gap-2 rounded-lg px-3 text-center font-mono text-[11px] font-bold uppercase tracking-wide transition ${
+            className={`panel-frost absolute flex min-h-14 w-32 -translate-x-1/2 -translate-y-1/2 items-center justify-center gap-2 rounded-lg px-3 text-center font-mono text-[11px] font-bold tracking-wide transition ${
               isActive ? "border-[#f4b64b]/70 text-[#f4b64b]" : "text-white hover:border-[#f4b64b]/45"
             }`}
             style={{ left: `${item.x}%`, top: `${item.y}%` }}
@@ -85,7 +112,7 @@ export function SkillsDashboard() {
 
   return (
     <section id="skills" className="portfolio-grid relative overflow-hidden bg-[#050809] px-5 py-12 sm:px-8 lg:px-12 lg:py-16">
-      <div className="relative z-10 mx-auto max-w-[1480px]">
+      <div className="relative z-10 mx-auto w-[94vw]">
         <div className="mb-8 grid gap-8 lg:grid-cols-[0.36fr_0.64fr] lg:items-end">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <div className="mb-5 flex items-center gap-4 font-mono text-sm font-bold uppercase tracking-[0.22em] text-[#f4b64b]">

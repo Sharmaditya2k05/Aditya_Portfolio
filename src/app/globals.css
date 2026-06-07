@@ -118,6 +118,43 @@
     background: linear-gradient(135deg, #ffe0a0 0%, #f4b64b 48%, #b97819 100%);
   }
 
+  .floating-tile {
+    animation: tile-float 4.5s ease-in-out infinite;
+  }
+
+  .cert-glow-bar::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 2px;
+    width: 42%;
+    background: linear-gradient(90deg, var(--cert-color), transparent);
+    box-shadow: 0 0 22px var(--cert-color);
+  }
+
+  .world-map-dots {
+    background-image:
+      radial-gradient(circle at 18% 35%, rgba(244, 182, 75, 0.35) 0 1.2px, transparent 1.4px),
+      radial-gradient(circle at 28% 42%, rgba(244, 182, 75, 0.32) 0 1.2px, transparent 1.4px),
+      radial-gradient(circle at 38% 30%, rgba(244, 182, 75, 0.25) 0 1.2px, transparent 1.4px),
+      radial-gradient(circle at 48% 48%, rgba(244, 182, 75, 0.32) 0 1.2px, transparent 1.4px),
+      radial-gradient(circle at 58% 36%, rgba(244, 182, 75, 0.3) 0 1.2px, transparent 1.4px),
+      radial-gradient(circle at 68% 44%, rgba(244, 182, 75, 0.28) 0 1.2px, transparent 1.4px),
+      radial-gradient(circle at 76% 58%, rgba(244, 182, 75, 0.24) 0 1.2px, transparent 1.4px);
+    background-size: 22px 18px;
+    filter: drop-shadow(0 0 10px rgba(244, 182, 75, 0.18));
+  }
+
+  @keyframes tile-float {
+    0%, 100% {
+      transform: translate3d(0, 0, 0);
+    }
+    50% {
+      transform: translate3d(0, -9px, 0);
+    }
+  }
+
   .text-gradient-hero {
     background: linear-gradient(180deg, #646973 0%, #bbccd7 100%);
     -webkit-background-clip: text;

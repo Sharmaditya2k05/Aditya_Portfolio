@@ -26,13 +26,28 @@ const heroStats = [
   { icon: Clock, value: "300+", label: "Hours of Learning & Building" },
 ];
 
+const floatOffsets = [
+  { x: [0, -10, 8, 0], y: [0, -12, -4, 0] },
+  { x: [0, 12, -7, 0], y: [0, -10, -2, 0] },
+  { x: [0, -14, 4, 0], y: [0, 8, -8, 0] },
+  { x: [0, 10, -10, 0], y: [0, 7, -7, 0] },
+  { x: [0, -8, 12, 0], y: [0, 10, -5, 0] },
+  { x: [0, 14, -6, 0], y: [0, 9, -7, 0] },
+];
+
 function StatBubble({ stat, index }: { stat: (typeof heroStats)[number]; index: number }) {
   const Icon = stat.icon;
 
   return (
     <motion.div
       variants={fadeUp}
-      whileHover={{ y: -6, scale: 1.02 }}
+      animate={floatOffsets[index]}
+      transition={{ duration: 4 + index * 0.22, repeat: Infinity, ease: "easeInOut" }}
+      whileHover={{
+        y: -18,
+        scale: 1.06,
+        boxShadow: "0 24px 90px rgba(244,182,75,0.18), inset 0 1px 0 rgba(255,255,255,0.08)",
+      }}
       className={`panel-frost gold-glow absolute hidden w-40 rounded-xl p-4 xl:block ${
         index === 0
           ? "left-[5%] top-[2%]"
@@ -73,7 +88,7 @@ export function AboutSection() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.18 }}
-        className="relative z-10 mx-auto grid max-w-[1480px] items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]"
+        className="relative z-10 mx-auto grid w-[94vw] items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]"
       >
         <div>
           <motion.div variants={fadeUp} className="mb-8 flex items-center gap-4 font-mono text-sm font-bold uppercase tracking-[0.22em] text-[#f4b64b]">

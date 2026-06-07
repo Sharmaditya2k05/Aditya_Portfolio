@@ -1,15 +1,14 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
-import { sendContactEmail, sendAutoReply } from "@/lib/email";
+import { sendAutoReply, sendContactEmail } from "@/lib/email";
 import { contactFormSchema } from "@/lib/validations";
 import type { ApiResponse } from "@/types";
 
 export async function POST(request: NextRequest): Promise<NextResponse<ApiResponse>> {
   try {
     const body = await request.json();
-
-    // Validate with Zod
     const parsed = contactFormSchema.safeParse(body);
+
     if (!parsed.success) {
       return NextResponse.json(
         {
@@ -21,25 +20,45 @@ export async function POST(request: NextRequest): Promise<NextResponse<ApiRespon
     }
 
     const { name, email, subject, message } = parsed.data;
+    let emailSent = false;
+    let savedToDb = false;
 
-    // Persist to DB
-    await prisma.contactMessage.create({
-      data: { name, email, subject, message },
-    });
-
-    // Send emails (don't throw if email fails — DB record is source of truth)
     try {
       await Promise.all([
         sendContactEmail({ name, email, subject, message }),
         sendAutoReply(email, name),
       ]);
+      emailSent = true;
     } catch (emailError) {
       console.error("Email send failed:", emailError);
-      // Still return success — message was saved
+    }
+
+    try {
+      await prisma.contactMessage.create({
+        data: { name, email, subject, message },
+      });
+      savedToDb = true;
+    } catch (dbError) {
+      console.error("Contact DB save failed:", dbError);
+    }
+
+    if (!emailSent && !savedToDb) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Message could not be sent. Please email me directly.",
+        },
+        { status: 500 }
+      );
     }
 
     return NextResponse.json(
-      { success: true, message: "Message sent successfully" },
+      {
+        success: true,
+        message: emailSent
+          ? "Message sent successfully"
+          : "Message saved successfully. Email delivery is not configured.",
+      },
       { status: 201 }
     );
   } catch (error) {

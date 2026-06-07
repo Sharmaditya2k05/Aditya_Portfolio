@@ -8,7 +8,7 @@ import { staggerContainer, fadeUp } from "@/lib/animations";
 export function EducationSection() {
   return (
     <section id="education" className="portfolio-grid relative overflow-hidden bg-[#060909] px-5 py-12 sm:px-8 lg:px-12 lg:py-16">
-      <div className="relative z-10 mx-auto max-w-[1480px]">
+      <div className="relative z-10 mx-auto w-[94vw]">
         <div className="mb-8 grid gap-8 lg:grid-cols-[0.38fr_0.62fr] lg:items-end">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <div className="mb-5 flex items-center gap-4 font-mono text-sm font-bold uppercase tracking-[0.22em] text-[#f4b64b]">
