@@ -45,14 +45,14 @@ function MarqueeRow({ images, direction = "left", speed = 0.3 }: MarqueeRowProps
           key={`${src}-${i}`}
           className="relative h-[150px] w-[270px] flex-shrink-0 overflow-hidden rounded-xl bg-surface"
         >
-          <Image
+        <Image
             src={src}
-            alt=""
+            alt="Project or certificate snapshot"
             fill
             className="object-cover"
             sizes="420px"
             loading="lazy"
-            unoptimized // GIFs from external domains
+            unoptimized={src.startsWith("http")}
           />
         </div>
       ))}

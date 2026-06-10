@@ -1,13 +1,21 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { BookOpen, CalendarDays, CheckCircle2, GraduationCap } from "lucide-react";
 import { EDUCATION } from "@/data/timeline";
 import { staggerContainer, fadeUp } from "@/lib/animations";
 
+function educationLogo(institution: string) {
+  if (institution.includes("Jaypee")) return "/assets/certs/jiit-logo.png";
+  if (institution.includes("IIT Patna")) return "/assets/certs/iitp-logo.png";
+  if (institution.includes("Delhi Public School")) return "/assets/certs/dps-ghaziabad.png";
+  return null;
+}
+
 export function EducationSection() {
   return (
-    <section id="education" className="portfolio-grid relative overflow-hidden bg-[#060909] px-5 py-12 sm:px-8 lg:px-12 lg:py-16">
+    <section id="education" data-page="07" className="numbered-section portfolio-grid relative overflow-hidden bg-[#060909] px-5 py-12 sm:px-8 lg:px-12 lg:py-16">
       <div className="relative z-10 mx-auto w-[94vw]">
         <div className="mb-8 grid gap-8 lg:grid-cols-[0.38fr_0.62fr] lg:items-end">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
@@ -37,7 +45,13 @@ export function EducationSection() {
             <motion.article key={item.degree} variants={fadeUp} whileHover={{ y: -5 }} className="panel-frost group rounded-[18px] p-6">
               <div className="mb-6 flex items-center justify-between">
                 <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-[#f4b64b]/38 bg-[#f4b64b]/10 text-[#f4b64b]">
-                  {index === 0 ? <GraduationCap size={30} /> : <BookOpen size={28} />}
+                  {educationLogo(item.institution) ? (
+                    <Image src={educationLogo(item.institution)!} alt={`${item.institution} logo`} width={38} height={38} className="max-h-10 w-auto object-contain" />
+                  ) : index === 0 ? (
+                    <GraduationCap size={30} />
+                  ) : (
+                    <BookOpen size={28} />
+                  )}
                 </div>
                 <span className="font-display text-4xl font-extrabold text-white/12">0{index + 1}</span>
               </div>
@@ -47,10 +61,15 @@ export function EducationSection() {
                 {item.years}
               </div>
 
-              <h3 className="mb-3 font-display text-2xl font-extrabold leading-tight text-white transition group-hover:text-[#f4b64b]">
+              <h3 className="mb-3 min-h-[4rem] font-display text-2xl font-extrabold leading-tight text-white transition group-hover:text-[#f4b64b]">
                 {item.degree}
               </h3>
               <p className="min-h-14 font-mono text-sm leading-7 text-white/60">{item.institution}</p>
+              {item.result && (
+                <p className="mt-4 inline-flex rounded-lg border border-[#f4b64b]/34 bg-[#f4b64b]/10 px-3 py-2 font-mono text-xs font-bold uppercase tracking-widest text-[#f4b64b]">
+                  {item.result}
+                </p>
+              )}
 
               <div className="mt-6 border-t border-white/8 pt-4">
                 <span

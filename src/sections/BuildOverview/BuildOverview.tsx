@@ -78,7 +78,8 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="portfolio-grid relative overflow-hidden bg-[#060909] px-5 py-12 sm:px-8 lg:px-12 lg:py-16"
+      data-page="02"
+      className="numbered-section portfolio-grid relative overflow-hidden bg-[#060909] px-5 py-12 sm:px-8 lg:px-12 lg:py-16"
     >
       <div className="pointer-events-none absolute inset-0 bg-noise opacity-50" />
       <div className="pointer-events-none absolute bottom-0 left-0 h-36 w-full bg-gradient-to-t from-black/55 to-transparent" />

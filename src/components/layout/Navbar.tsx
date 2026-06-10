@@ -18,7 +18,7 @@ export function Navbar() {
       >
         <nav className="pointer-events-auto flex w-full max-w-[1540px] items-center justify-between rounded-full border border-white/10 bg-black/72 px-3 py-3 shadow-[0_16px_60px_rgba(0,0,0,0.55)] backdrop-blur-2xl sm:px-5">
           <a href="#" className="rounded-full px-3 py-1 transition hover:bg-[#f4b64b]/10" aria-label="Home">
-            <span className="font-mono text-xl font-black uppercase tracking-[0.22em] text-[#f4b64b]">ADI</span>
+            <span className="font-mono text-xl font-black uppercase tracking-[0.22em] text-[#f4b64b]">AS</span>
           </a>
 
           <div className="hidden items-center gap-8 md:flex">

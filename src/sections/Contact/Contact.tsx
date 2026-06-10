@@ -109,7 +109,7 @@ export function ContactFormSection() {
 
   if (status === "success") {
     return (
-      <section id="contact" className="portfolio-grid bg-[#050809] px-5 py-16">
+      <section id="contact" data-page="08" className="numbered-section portfolio-grid relative overflow-hidden bg-[#050809] px-5 py-16">
         <motion.div initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} className="panel-frost mx-auto flex max-w-lg flex-col items-center gap-6 rounded-[20px] p-10 text-center">
           <div className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-400/12 text-emerald-300">
             <CheckCircle2 size={32} />
@@ -125,7 +125,7 @@ export function ContactFormSection() {
   }
 
   return (
-    <section id="contact" className="portfolio-grid relative overflow-hidden bg-[#050809] px-5 py-12 sm:px-8 lg:px-12 lg:py-16">
+    <section id="contact" data-page="08" className="numbered-section portfolio-grid relative overflow-hidden bg-[#050809] px-5 py-12 sm:px-8 lg:px-12 lg:py-16">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-black/45 to-transparent" />
 
       <div className="relative z-10 mx-auto w-[94vw]">

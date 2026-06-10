@@ -58,6 +58,9 @@ function BackgroundVideo() {
 
     // Load frames
     framesRef.current = preloadFrames();
+    const initialFrame = window.innerWidth < 640 ? 10 : 0;
+    targetRef.current = initialFrame;
+    currentRef.current = initialFrame;
 
     // Resize canvas to match display size
     const resize = () => {
@@ -76,12 +79,17 @@ function BackgroundVideo() {
       const cw = canvas.width;
       const ch = canvas.height;
 
-      // Cover fit — right-anchored so robot sits on the right half
-      const scale = Math.max((cw * 0.6) / frame.naturalWidth, ch / frame.naturalHeight);
+      const isMobile = cw / window.devicePixelRatio < 640;
+
+      // Desktop keeps the cinematic right-anchored crop. Tall mobile screens need
+      // a softer fit so the robot remains visible instead of being cropped away.
+      const scale = isMobile
+        ? Math.max((cw * 1.26) / frame.naturalWidth, (ch * 0.78) / frame.naturalHeight)
+        : Math.max((cw * 0.6) / frame.naturalWidth, ch / frame.naturalHeight);
       const dw = frame.naturalWidth * scale;
       const dh = frame.naturalHeight * scale;
-      const dx = cw - dw; // right edge
-      const dy = (ch - dh) / 2;
+      const dx = isMobile ? cw - dw * 0.72 : cw - dw;
+      const dy = isMobile ? (ch - dh) * 0.42 : (ch - dh) / 2;
 
       ctx.clearRect(0, 0, cw, ch);
       ctx.drawImage(frame, dx, dy, dw, dh);
@@ -95,9 +103,9 @@ function BackgroundVideo() {
       ctx.fillRect(0, 0, cw, ch);
 
       // Paint right-edge fade (softens hard right edge on smaller screens)
-      const rightGrad = ctx.createLinearGradient(cw * 0.82, 0, cw, 0);
+      const rightGrad = ctx.createLinearGradient(cw * (isMobile ? 0.9 : 0.82), 0, cw, 0);
       rightGrad.addColorStop(0, "rgba(12,12,12,0)");
-      rightGrad.addColorStop(1, "rgba(12,12,12,0.55)");
+      rightGrad.addColorStop(1, `rgba(12,12,12,${isMobile ? 0.25 : 0.55})`);
       ctx.fillStyle = rightGrad;
       ctx.fillRect(0, 0, cw, ch);
     };
@@ -159,13 +167,26 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen flex-col overflow-hidden bg-[#0C0C0C]"
+      data-page="01"
+      className="numbered-section relative flex min-h-screen flex-col overflow-hidden bg-[#0C0C0C]"
     >
       <BackgroundVideo />
 
       {/* Gradient overlay — full width, strong left fade */}
-      <div className="pointer-events-none absolute inset-0 z-[1]"
-        style={{ background: "linear-gradient(to right, #0C0C0C 0%, #0C0C0C 32%, rgba(12,12,12,0.85) 45%, rgba(12,12,12,0.4) 58%, rgba(12,12,12,0.05) 72%, transparent 85%)" }} />
+      <div
+        className="pointer-events-none absolute inset-0 z-[1]"
+        style={{
+          background:
+            "linear-gradient(to right, #0C0C0C 0%, #0C0C0C 32%, rgba(12,12,12,0.85) 45%, rgba(12,12,12,0.4) 58%, rgba(12,12,12,0.05) 72%, transparent 85%)",
+        }}
+      />
+      <div
+        className="pointer-events-none absolute inset-0 z-[1] sm:hidden"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(12,12,12,0.1) 0%, rgba(12,12,12,0.12) 42%, rgba(12,12,12,0.62) 100%)",
+        }}
+      />
       {/* Bottom fade — smooths hero into next section */}
       <div className="pointer-events-none absolute bottom-0 inset-x-0 z-[2] h-48"
         style={{ background: "linear-gradient(to bottom, transparent 0%, rgba(12,12,12,0.62) 50%, #0C0C0C 100%)" }} />
@@ -183,7 +204,7 @@ export function HeroSection() {
           animate="visible"
           className="px-10 pt-6 font-mono text-xs uppercase tracking-widest text-ink-2"
         >
-          AI/ML engineer and computer science student based in New Delhi.
+          Computer Science student at JIIT and AI/ML Engineer Intern at AiAssured TestAIng.
         </motion.p>
 
         {/* Big heading */}

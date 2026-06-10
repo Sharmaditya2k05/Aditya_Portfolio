@@ -64,6 +64,7 @@ export interface EducationItem {
   years: string;
   degree: string;
   institution: string;
+  result?: string;
   status: "Current" | "Completed";
 }
 
@@ -96,10 +97,13 @@ export interface ShowcaseProject {
   title: string;
   subtitle: string;
   desc: string;
-  tags: string[];
+  tags: string[]
   stats: { value: string; label: string }[];
   href: string;
   period: string;
+  longDesc?: string;
+  techDetails?: { layer: string; tech: string }[];
+  features?: string[];
 }
 
 // ─── Animation helpers ────────────────────────────────────────────────────────
@@ -115,4 +119,3 @@ export interface StaggerConfig {
   delayChildren?: number;
   staggerChildren?: number;
 }
-

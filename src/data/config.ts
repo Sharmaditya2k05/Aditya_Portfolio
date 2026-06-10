@@ -18,13 +18,13 @@ export const HERO_TAGLINE =
   "Building intelligent systems across machine learning, computer vision, and data-driven applications.";
 
 export const ABOUT_BIO =
-  "CSE student at Jaypee Institute of Information Technology (IV Semester). Currently interning as an AI/ML Engineer at AiAssured TestAIng, working on real-world AI safety and testing applications. Passionate about building production-grade intelligent systems.";
+  "Computer Science student at Jaypee Institute of Information Technology and AI/ML Engineer Intern at AiAssured TestAIng. Passionate about building production-grade intelligent systems, with hands-on experience in machine learning, computer vision, AI safety, and real-world AI testing. Dedicated to developing scalable, impactful solutions that bridge research and practical applications.";
 
 export const SITE_METADATA = {
   name: "Aditya Sharma",
   title: "Aditya Sharma - AI/ML Engineer",
   description:
-    "AI/ML engineer and computer science student based in New Delhi. Building intelligent systems across machine learning, computer vision, and data-driven applications.",
+    "Computer Science student at Jaypee Institute of Information Technology and AI/ML Engineer Intern at AiAssured TestAIng, building production-grade intelligent systems.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://adityasharma.dev",
   twitter: "@sharmaditya2k05",
   keywords: [

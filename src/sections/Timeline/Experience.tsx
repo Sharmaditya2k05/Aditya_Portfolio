@@ -18,7 +18,7 @@ const rowIcons = [Eye, Network, Code2];
 
 export function ExperienceSection() {
   return (
-    <section id="experience" className="portfolio-grid relative overflow-hidden bg-[#060909] px-5 py-12 sm:px-8 lg:px-12 lg:py-16">
+    <section id="experience" data-page="03" className="numbered-section portfolio-grid relative overflow-hidden bg-[#060909] px-5 py-12 sm:px-8 lg:px-12 lg:py-16">
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/50" />
 
       <div className="relative z-10 mx-auto w-[94vw]">
